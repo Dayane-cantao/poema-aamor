@@ -11,6 +11,7 @@
             color: #333;
             text-align: center;
             padding: 50px;
+            overflow: hidden; /* Para garantir que os corações flutuantes não criem barra de rolagem */
         }
         h1 {
             color: #FF6347;
@@ -29,14 +30,39 @@
             padding: 30px;
             max-width: 600px;
             margin: auto;
+            position: relative; /* Necessário para exibir os corações sobre o container */
+            z-index: 1;
         }
         img {
-            width: 50px; /* Ajuste o tamanho da imagem */
+            width: 50px;
             margin: 10px;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 61% 19%, 83% 19%, 100% 38%, 93% 61%, 50% 100%, 7% 61%, 0% 38%, 17% 19%, 39% 19%);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Meu Poema para Você</h1>
         <img src="URL_DA_IMAGEM_DE_FLOR" alt="Flor">
@@ -59,5 +85,22 @@
         Pois em cada batida, em cada emoção,<br>
         Você é a poesia que habita meu coração.</p>
     </div>
+
+    <!-- Script para adicionar os corações flutuantes -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Remove o coração após a animação
+        }
+
+        setInterval(createHeart, 500); // Cria um coração a cada 500ms
+    </script>
 </body>
 </html>
