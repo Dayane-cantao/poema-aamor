@@ -7,57 +7,49 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
             color: #333;
             text-align: center;
             padding: 50px;
-            overflow: hidden; /* Para garantir que os corações flutuantes não criem barra de rolagem */
+            margin: 0;
+            height: 100vh;
+            background-image: url('images/unicornio.png'); /* Substitua pelo caminho correto da imagem do unicórnio */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
+
         h1 {
-            color: #FF6347;
+            color: #FF1493; /* Cor rosa para o título */
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 1.2em;
             line-height: 1.6;
             margin: 10px 0;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: rainbow 5s infinite;
         }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
+
+        /* Adicionei aqui um container para limitar a largura do texto */
         .container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente para o texto */
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             padding: 30px;
             max-width: 600px;
             margin: auto;
-            position: relative; /* Necessário para exibir os corações sobre o container */
-            z-index: 1;
-        }
-        img {
-            width: 50px;
-            margin: 10px;
-        }
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            clip-path: polygon(50% 0%, 61% 19%, 83% 19%, 100% 38%, 93% 61%, 50% 100%, 7% 61%, 0% 38%, 17% 19%, 39% 19%);
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) scale(0.5);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1.5);
-                opacity: 0;
-            }
         }
     </style>
 </head>
@@ -65,11 +57,6 @@
 
     <div class="container">
         <h1>Meu Poema para Você</h1>
-
-        <!-- Substitua os caminhos abaixo com as suas imagens -->
-        <img src="images/flor.png" alt="Flor">
-        <img src="images/coracao.png" alt="Coração">
-        <img src="images/unicornio.png" alt="Unicórnio">
 
         <p>Nos teus olhos, estrelas dançam,<br>
         Um brilho suave que sempre me encanta.<br>
@@ -89,22 +76,6 @@
         Você é a poesia que habita meu coração.</p>
     </div>
 
-    <!-- Script para adicionar os corações flutuantes -->
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.body.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000); // Remove o coração após a animação
-        }
-
-        setInterval(createHeart, 500); // Cria um coração a cada 500ms
-    </script>
 </body>
 </html>
 
