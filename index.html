@@ -3,77 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Poema para Você</title>
+    <title>Datas Importantes do Amor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             color: #333;
             text-align: center;
-            padding: 50px;
-            margin: 0;
-            height: 100vh;
-            background-image: url('images/unicornio.png'); /* Verifique se o caminho está correto */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            padding: 20px;
+            position: relative;
         }
-
         h1 {
-            color: #FF1493; /* Cor rosa para o título */
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            color: #FF69B4; /* Rosa */
         }
-
         p {
-            font-size: 1.2em;
             line-height: 1.6;
-            margin: 10px 0;
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: rainbow 5s infinite;
+            font-size: 20px;
+            animation: colorChange 2s infinite;
         }
-
-        @keyframes rainbow {
-            0% {
-                background-position: 0%;
-            }
-            100% {
-                background-position: 100%;
-            }
+        @keyframes colorChange {
+            0% { color: #FF4500; } /* Laranja */
+            50% { color: #1E90FF; } /* Azul */
+            100% { color: #32CD32; } /* Verde */
         }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semitransparente para o texto */
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 600px;
-            margin: auto;
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: heartBeat 1s infinite;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
         }
     </style>
 </head>
 <body>
+    <h1>Ecos do Coração</h1>
+    <p>Em treze de julho, um brilho surgiu,</p>
+    <p>Palavras trocadas, um sonho se abriu.</p>
+    <p>Em vinte e um, a luz de seu olhar,</p>
+    <p>Meu mundo parou, não sabia onde estar.</p>
+    <p>O vinte e sete trouxe a doce verdade,</p>
+    <p>Nossos corpos dançando, pura intensidade.</p>
+    <p>Na mesma data, um segredo tão belo,</p>
+    <p>“Te amo” sussurrado, um encanto singelo.</p>
+    <p>Em três de agosto, a esperança floriu,</p>
+    <p>Um pré-pedido surgiu, o amor que evoluiu.</p>
+    <p>E em dezessete, com a alma a vibrar,</p>
+    <p>O pedido oficial, um passo a amar.</p>
+    <p>Cada data é um eco, um verso a contar,</p>
+    <p>A história de nós, que não vai se apagar.</p>
+    <p>No calendário da vida, um amor sem fim,</p>
+    <p>Em cada lembrança, eu e você, assim.</p>
 
-    <div class="container">
-        <h1>Meu Poema para Você</h1>
+    <div class="heart" style="top: 20%; left: 20%;">❤️</div>
+    <div class="heart" style="top: 40%; left: 50%;">❤️</div>
+    <div class="heart" style="top: 60%; left: 30%;">❤️</div>
+    <div class="heart" style="top: 80%; left: 70%;">❤️</div>
 
-        <p>Nos teus olhos, estrelas dançam,<br>
-        Um brilho suave que sempre me encanta.<br>
-        Teu sorriso é a luz do meu dia,<br>
-        Na melodia do amor, és minha sinfonia.</p>
-        <p>Teus abraços, um abrigo, um lar,<br>
-        Em cada instante, meu mundo a iluminar.<br>
-        Te amar é um verso que nunca tem fim,<br>
-        No poema da vida, você é meu motim.</p>
-        <p>A cada risada, um sonho a se formar,<br>
-        Teu jeito especial faz meu coração cantar.<br>
-        Nessa dança entre almas, somos um só,<br>
-        Teu amor é a rima que nunca se apagou.</p>
-        <p>Então, minha querida, neste instante aqui,<br>
-        Saiba que ao teu lado é onde quero estar,<br>
-        Pois em cada batida, em cada emoção,<br>
-        Você é a poesia que habita meu coração.</p>
-    </div>
-
+    <script>
+        const hearts = document.querySelectorAll('.heart');
+        hearts.forEach(heart => {
+            heart.style.animationDelay = `${Math.random() * 2}s`;
+            heart.style.opacity = 0;
+            setInterval(() => {
+                heart.style.opacity = heart.style.opacity == 1 ? 0 : 1;
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
